@@ -2,14 +2,22 @@ defaults:
   - _self_
 
 dataset:
+  _target_: __main__.Dataset
   name: mnist
   batch_size: 64
+  shuffle: true
 
 optimizer:
+  _target_: __main__.Optimizer
   name: adam
   lr: 0.001
   betas: [0.9, 0.999]
   eps: 1e-8
+
+model:
+  _target_: __main__.Model
+  name: resnet18
+  num_classes: 10
 
 hydra:
   run:
